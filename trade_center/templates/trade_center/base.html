@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Trade Center</title>
+    <style>
+        label {
+            display: block;
+        }
+
+        .success {
+            background-color: darkgreen;
+            color: white;
+            padding: 10px;
+        }
+
+        .errorlist {
+            background-color: darkred;
+            color: white;
+            padding: 10px;
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+    </nav>
+    <main style="padding: 50px 0;">
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <a href="https://coenkonings.art/">Main site</a> |
+        <a href="https://www.instagram.com/coenkonings/">Instagram</a> |
+        <a href="https://github.com/CoenKonings">GitHub</a>
+    </footer>
+</body>
+</html>

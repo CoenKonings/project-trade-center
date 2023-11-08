@@ -1,0 +1,27 @@
+{% extends "trade_center/base.html" %}
+{% block content %}
+    {% if success %}
+        <p class="success">
+            Je voorstel is aangemaakt.
+        </p>
+    {% endif %}
+
+    <form action="/" method="post" style="padding: 20px 0;">
+        {% csrf_token %}
+        {{ form.as_div }}
+        <input type="submit" value="Submit">
+    </form>
+
+    <div>
+        Al een voorstel om te ruilen gedaan? Bekijk de status door op je naam te klikken:
+        <nav>
+            <ul>
+                {% for proposal in proposals %}
+                    <li><a href="/proposals/{{ proposal.id }}" style="display: block; width: fit-content;">{{ proposal.name }}</a></li>
+                {% empty %}
+                    <li>Er zijn nog geen voorstellen gedaan</li>
+                {% endfor %}
+            </ul>
+        </nav>
+    </div>
+{% endblock content %}

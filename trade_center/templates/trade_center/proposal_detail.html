@@ -1,0 +1,34 @@
+{% extends "trade_center/base.html" %}
+{% block content %}
+
+<p class="errorlist">BELANGRIJK: Neem contact op met Coen als je een fout gemaakt hebt - hij kan je voorstel dan verwijderen.</p>
+
+<p>Door {{ proposal.name }}</p>
+<p>Van {{ proposal.from_project.name }} naar {{ proposal.to_project.name }}</p>
+<p>
+    Geaccepteerd:
+    {% if proposal.accepted %}
+        ja
+    {% else %}
+        nee. Als er een match gevonden wordt, zal diegene contact met je
+        openmen. Anders kan je hier terugkomen door op de homepage op je eigen
+        naam te klikken.
+    {% endif %}
+</p>
+
+{% if proposal.accepted %}
+    <div>
+        <p class="success">
+            Je kan ruilen! Neem contact op met iedereen in de lijst hieronder -
+            als je meerdere namen ziet, kunnen jullie met zijn allen
+            doorschuiven.
+        </p>
+        <ul>
+            {% for accepted_by in proposal.accepted_by.all %}
+                <li>{{ accepted_by.name }} (wil van {{ accepted_by.from_project.name }} naar {{ accepted_by.to_project.name }})</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
+
+{% endblock content %}
