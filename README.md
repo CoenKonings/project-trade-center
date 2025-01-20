@@ -1,3 +1,4 @@
 # Project Trade Center
-A web-based application that helps students at HKU find someone to trade their assigned projects with.
-The system creates a directed graph, where each node represents a project and each proposal is represented by an edge. When a new proposal is made, the system checks for cycles in the graph. If a cycle is created by the new proposal, the people whose proposals are part of the cycle are matched and instructed to contact the teacher to trade projects.
+A web-based application that helps students at HKU music technology find someone to trade their assigned projects with. Users tell the system which project they were assigned and which project they would prefer. The system then finds a student they can trade with. If possible, the system also detects possible trades with multiple students (eg. student 1 goes from project A to project B, student 2 goes from B to C, and student 3 goes from C to A).
+
+The system creates a directed graph, where each node represents a project and each project trade proposal is represented by an edge. When a new proposal is made, the system checks for cycles in the graph. If a cycle is created by the new proposal, the person who created the proposal is instructed to contact the other people whose proposals are in the cycle.
