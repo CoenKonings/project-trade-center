@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView, TemplateView, View
 from . import models
 from .forms import ProposalForm
-from .helpers import find_matches
 
 
 class CreateProposalView(View):
@@ -22,19 +21,8 @@ class CreateProposalView(View):
                 name=self.form.cleaned_data["name"],
             )
 
-            matches = find_matches(proposal)
             proposal.save()
-
-            for i in range(len(matches)):
-                proposal_a = matches[i]
-
-                for j in range(i + 1, len(matches)):
-                    proposal_b = matches[j]
-                    proposal_a.accepted_by.add(proposal_b)
-
-                proposal_a.accepted = True
-                proposal_a.save
-
+            matches = proposal.find_matches()
             return redirect("/proposals/{}".format(proposal.id))
         else:
             return render(request, self.template_name, self.get_context_data())
